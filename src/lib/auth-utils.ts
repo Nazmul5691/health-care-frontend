@@ -1,3 +1,4 @@
+
 export type UserRole = "ADMIN" | "DOCTOR" | "PATIENT";
 
 // exact : ["/my-profile", "settings"]
@@ -15,7 +16,7 @@ export const commonProtectedRoutes: RouteConfig = {
 }
 
 export const doctorProtectedRoutes: RouteConfig = {
-    patterns: [/^\/doctor/], // Routes starting with /doctor/* , /assitants, /appointments/*
+    patterns: [/^\/doctor/], // Routes starting with /doctor/* , /assistants, /appointments/*
     exact: [], // "/assistants"
 }
 
