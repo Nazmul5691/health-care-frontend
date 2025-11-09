@@ -78,7 +78,7 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
             throw new Error("Tokens not found in cookies");
         }
 
-        
+
 
         await setCookie("accessToken", accessTokenObject.accessToken, {
             secure: true,
@@ -96,7 +96,7 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
             sameSite: refreshTokenObject['SameSite'] || "none",
         });
 
-        
+
         const verifiedToken: JwtPayload | string = jwt.verify(accessTokenObject.accessToken, process.env.JWT_SECRET as string);
 
         if (typeof verifiedToken === "string") {
@@ -106,22 +106,25 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
 
         const userRole: UserRole = verifiedToken.role;
 
-        if(!result.success){
-            throw new Error("Login failed")       
+        if (!result.success) {
+            throw new Error(result.message || "Login failed");
         }
 
 
         if (redirectTo) {
             const requestedPath = redirectTo.toString();
             if (isValidRedirectForRole(requestedPath, userRole)) {
-                redirect(requestedPath);
+                redirect(`${requestedPath}?loggedIn=true`);
             } else {
-                redirect(getDefaultDashboardRoute(userRole));
+                redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
             }
         }
-        else{
-            redirect(getDefaultDashboardRoute(userRole));
+        else {
+            redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
         }
+
+
+        // return result;
 
     } catch (error: any) {
         // Re-throw NEXT_REDIRECT errors so Next.js can handle them
@@ -129,6 +132,6 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
             throw error;
         }
         console.log(error);
-        return { error: "Login failed" };
+        return { success: false, message: `${process.env.NODE_ENV === 'development' ? error.message : "Login Failed. You might have entered incorrect email or password."}` };
     }
 }
