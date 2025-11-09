@@ -2,6 +2,7 @@
 "use server"
 
 import z from "zod";
+import { loginUser } from "./loginUser";
 
 const registerValidationZodSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -65,15 +66,25 @@ export const registerPatient = async (_currentState: any, formData: any): Promis
         const res = await fetch("http://localhost:5000/api/v1/user/create-patient", {
             method: "POST",
             body: newFormData,
-        }).then(res => res.json());
+        })
 
-        console.log(res, "res");
+        const result = await res.json();
 
-        return res;
+        console.log(result, "result");
+
+        if(result.success){
+            await loginUser(_currentState, formData);
+        }
+
+        return result;
 
 
 
-    } catch (error) {
+    } catch (error: any) {
+        // Re-throw NEXT_REDIRECT errors so Next.js can handle them
+        if (error?.digest?.startsWith('NEXT_REDIRECT')) {
+            throw error;
+        }
         console.log(error);
         return { error: "Registration failed" };
     }
