@@ -32,7 +32,16 @@ export const serverFetch = {
 
     put: async (endPoint: string, options: RequestInit = {}): Promise<Response> => serverFetchHelper(endPoint, { ...options, method: 'PUT' }),
 
+    patch: async (endPoint: string, options: RequestInit = {}): Promise<Response> => serverFetchHelper(endPoint, { ...options, method: 'PATCH' }),
+
     delete: async (endPoint: string, options: RequestInit = {}): Promise<Response> => serverFetchHelper(endPoint, { ...options, method: 'DELETE' }),
 
-    patch: async (endPoint: string, options: RequestInit = {}): Promise<Response> => serverFetchHelper(endPoint, { ...options, method: 'PATCH' }),
 }
+
+
+
+/**
+ * 
+ * serverFetch.get("/auth/me")
+ * serverFetch.post("/auth/login", { body: JSON.stringify({}) })
+ */
