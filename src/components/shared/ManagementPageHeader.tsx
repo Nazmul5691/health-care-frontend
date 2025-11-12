@@ -14,13 +14,10 @@ interface ManagementPageHeaderProps {
     children?: React.ReactNode;
 }
 
-const ManagementPageHeader = ({
-    title,
-    description,
-    action,
-    children,
-}: ManagementPageHeaderProps) => {
+const ManagementPageHeader = ({ title, description, action, children }: ManagementPageHeaderProps) => {
+
     const Icon = action?.icon || Plus;
+
     return (
         <div className="flex items-center justify-between">
             <div>
@@ -29,6 +26,7 @@ const ManagementPageHeader = ({
                     <p className="text-muted-foreground mt-1">{description}</p>
                 )}
             </div>
+
             {action && (
                 <Button onClick={action.onClick}>
                     <Icon className="mr-2 h-4 w-4" />

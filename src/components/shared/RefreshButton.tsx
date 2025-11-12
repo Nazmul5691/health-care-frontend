@@ -10,11 +10,7 @@ interface RefreshButtonProps {
     showLabel?: boolean;
 }
 
-const RefreshButton = ({
-    size = "default",
-    variant = "default",
-    showLabel = true,
-}: RefreshButtonProps) => {
+const RefreshButton = ({size = "default",variant = "default",showLabel = true}: RefreshButtonProps) => {
 
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
