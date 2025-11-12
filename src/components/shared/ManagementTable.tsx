@@ -1,4 +1,5 @@
 "use client";
+
 import { Edit, Eye, Loader2, MoreHorizontal, Trash } from "lucide-react";
 import React from "react";
 import { Button } from "../ui/button";
@@ -50,7 +51,7 @@ function ManagementTable<T>({
 }: ManagementTableProps<T>) {
 
     const hasActions = onView || onEdit || onDelete;
-    
+
     return (
         <>
             <div className="rounded-lg border relative">
