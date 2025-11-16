@@ -17,7 +17,7 @@ const loginValidationZodSchema = z.object({
     password: z.string("Password is required").min(6, {
         error: "Password is required and must be at least 6 characters long",
     }).max(100, {
-        error: "Password must be at most 50 characters long",
+        error: "Password must be at most 100 characters long",
     }),
 });
 
@@ -47,7 +47,6 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
         //     }
         // }
 
-
         // const res = await fetch("http://localhost:5000/api/v1/auth/login", {
         //     method: "POST",
         //     body: JSON.stringify(loginData),
@@ -65,7 +64,6 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
         if (zodValidator(payload, loginValidationZodSchema).success === false) {
             return zodValidator(payload, loginValidationZodSchema);
         }
-
 
         const validatedPayload = zodValidator(payload, loginValidationZodSchema).data;
 
