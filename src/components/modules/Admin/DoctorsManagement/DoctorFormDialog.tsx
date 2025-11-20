@@ -39,6 +39,7 @@ const DoctorFormDialog = ({
     const isEdit = !!doctor;
 
     const [selectedSpeciality, setSelectedSpeciality] = useState<string>("");
+    
     const [gender, setGender] = useState<"MALE" | "FEMALE">(
         doctor?.gender || "MALE"
     );
