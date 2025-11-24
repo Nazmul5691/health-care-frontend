@@ -1,12 +1,12 @@
 "use client";
+import DeleteConfirmationDialog from "@/components/shared/DeleteConfirmationDialog";
 import ManagementTable from "@/components/shared/ManagementTable";
 import { deleteSpeciality } from "@/services/admin/specialitiesManagement";
+import { ISpecialty } from "@/types/specialities.interface";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { ISpecialty } from "@/types/specialities.interface";
 import { specialitiesColumns } from "./specialitiesColumns";
-import DeleteConfirmationDialog from "@/components/shared/DeleteConfirmationDialog";
 
 interface SpecialityTableProps {
   specialities: ISpecialty[];

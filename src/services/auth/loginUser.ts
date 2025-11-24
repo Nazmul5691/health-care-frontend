@@ -2,60 +2,21 @@
 "use server"
 
 import { getDefaultDashboardRoute, isValidRedirectForRole, UserRole } from "@/lib/auth-utils";
+import { serverFetch } from "@/lib/server-fetch";
+import { zodValidator } from "@/lib/zodValidator";
+import { loginValidationZodSchema } from "@/zod/auth.validation";
 import { parse } from "cookie";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { redirect } from "next/navigation";
-import z from "zod";
 import { setCookie } from "./tokenHandlers";
-import { zodValidator } from "@/lib/zodValidator";
-import { serverFetch } from "@/lib/server-fetch";
 
-const loginValidationZodSchema = z.object({
-    email: z.email({
-        message: "Email is required",
-    }),
-    password: z.string("Password is required").min(6, {
-        error: "Password is required and must be at least 6 characters long",
-    }).max(100, {
-        error: "Password must be at most 100 characters long",
-    }),
-});
+
 
 export const loginUser = async (_currentState: any, formData: any): Promise<any> => {
     try {
         const redirectTo = formData.get('redirect') || null;
         let accessTokenObject: null | any = null;
         let refreshTokenObject: null | any = null;
-
-
-        // const loginData = {
-        //     email: formData.get('email'),
-        //     password: formData.get('password'),
-        // }
-
-        // const validatedFields = loginValidationZodSchema.safeParse(loginData);
-
-        // if (!validatedFields.success) {
-        //     return {
-        //         success: false,
-        //         errors: validatedFields.error.issues.map(issue => {
-        //             return {
-        //                 field: issue.path[0],
-        //                 message: issue.message,
-        //             }
-        //         })
-        //     }
-        // }
-
-        // const res = await fetch("http://localhost:5000/api/v1/auth/login", {
-        //     method: "POST",
-        //     body: JSON.stringify(loginData),
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        // });
-
-
         const payload = {
             email: formData.get('email'),
             password: formData.get('password'),
@@ -102,7 +63,6 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
         }
 
 
-
         await setCookie("accessToken", accessTokenObject.accessToken, {
             secure: true,
             httpOnly: true,
@@ -118,8 +78,6 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
             path: refreshTokenObject.Path || "/",
             sameSite: refreshTokenObject['SameSite'] || "none",
         });
-
-
         const verifiedToken: JwtPayload | string = jwt.verify(accessTokenObject.accessToken, process.env.JWT_SECRET as string);
 
         if (typeof verifiedToken === "string") {
@@ -133,6 +91,20 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
             throw new Error(result.message || "Login failed");
         }
 
+        // if (redirectTo && result.data.needPasswordChange) {
+        //     const requestedPath = redirectTo.toString();
+        //     if (isValidRedirectForRole(requestedPath, userRole)) {
+        //         redirect(`/reset-password?redirect=${requestedPath}`);
+        //     } else {
+        //         redirect("/reset-password");
+        //     }
+        // }
+
+        // if (result.data.needPasswordChange) {
+        //     redirect("/reset-password");
+        // }
+
+
 
         if (redirectTo) {
             const requestedPath = redirectTo.toString();
@@ -141,13 +113,9 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
             } else {
                 redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
             }
-        }
-        else {
+        } else {
             redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
         }
-
-
-        // return result;
 
     } catch (error: any) {
         // Re-throw NEXT_REDIRECT errors so Next.js can handle them

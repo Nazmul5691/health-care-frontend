@@ -33,7 +33,6 @@ const doctors = [
 const DoctorCard = ({ doctor }: { doctor: typeof doctors[0] }) => {
     return (
         <Card className="text-center overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            
             <CardHeader className="bg-blue-50/50 items-center p-6">
                 <Image 
                     src={doctor.image} 
@@ -43,7 +42,6 @@ const DoctorCard = ({ doctor }: { doctor: typeof doctors[0] }) => {
                     className="rounded-full border-4 border-white shadow-md"
                 />
             </CardHeader>
-
             <CardContent className="p-6">
                 <CardTitle className="text-lg">{doctor.name}</CardTitle>
                 <p className="text-primary font-medium mt-1">{doctor.specialty}</p>
@@ -53,7 +51,6 @@ const DoctorCard = ({ doctor }: { doctor: typeof doctors[0] }) => {
                     <span className="ml-2 text-muted-foreground">({doctor.reviews} reviews)</span>
                 </div>
             </CardContent>
-            
              <CardFooter className="grid grid-cols-2 gap-2 p-4 pt-0">
                 <Button variant="outline">View Profile</Button>
                 <Button>Book Now</Button>

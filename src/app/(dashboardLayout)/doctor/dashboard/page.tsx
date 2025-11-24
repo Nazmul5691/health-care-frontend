@@ -1,7 +1,5 @@
-export default function DoctorDashboardPage() {
-    return (
-        <div>
-            <h1>This is DoctorDashboardPage</h1>
-        </div>
-    );
-}
+const DoctorDashboardPage = () => {
+  return <div>DoctorDashboardPage</div>;
+};
+
+export default DoctorDashboardPage;

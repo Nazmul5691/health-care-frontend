@@ -1,7 +1,5 @@
-export default function AdminDashboardPage() {
-    return (
-        <div>
-            <h1>This is AdminDashboardPage</h1>
-        </div>
-    );
-}
+const AdminDashboardPage = () => {
+  return <div>AdminDashboardPage</div>;
+};
+
+export default AdminDashboardPage;
