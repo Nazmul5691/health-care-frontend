@@ -2,7 +2,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { getDefaultDashboardRoute, getRouteOwner, isAuthRoute, UserRole } from './lib/auth-utils';
-// import { getUserInfo } from './services/auth/getUserInfo';
+import { getUserInfo } from './services/auth/getUserInfo';
 import { deleteCookie, getCookie } from './services/auth/tokenHandlers';
 import { getNewAccessToken } from './services/auth/auth.service';
 
@@ -74,21 +74,21 @@ export async function proxy(request: NextRequest) {
 
     // Rule 3 : User need password change
 
-    // if (accessToken) {
-    //     const userInfo = await getUserInfo();
-    //     if (userInfo.needPasswordChange) {
-    //         if (pathname !== "/reset-password") {
-    //             const resetPasswordUrl = new URL("/reset-password", request.url);
-    //             resetPasswordUrl.searchParams.set("redirect", pathname);
-    //             return NextResponse.redirect(resetPasswordUrl);
-    //         }
-    //         return NextResponse.next();
-    //     }
+    if (accessToken) {
+        const userInfo = await getUserInfo();
+        if (userInfo.needPasswordChange) {
+            if (pathname !== "/reset-password") {
+                const resetPasswordUrl = new URL("/reset-password", request.url);
+                resetPasswordUrl.searchParams.set("redirect", pathname);
+                return NextResponse.redirect(resetPasswordUrl);
+            }
+            return NextResponse.next();
+        }
 
-    //     if (userInfo && !userInfo.needPasswordChange && pathname === '/reset-password') {
-    //         return NextResponse.redirect(new URL(getDefaultDashboardRoute(userRole as UserRole), request.url));
-    //     }
-    // }
+        if (userInfo && !userInfo.needPasswordChange && pathname === '/reset-password') {
+            return NextResponse.redirect(new URL(getDefaultDashboardRoute(userRole as UserRole), request.url));
+        }
+    }
 
     // Rule 4 : User is trying to access common protected route
     if (routerOwner === "COMMON") {
