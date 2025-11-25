@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { createReview } from "@/services/patient/reviews.services";
+import { createReview } from "@/services/patient/reviews.service";
 import { Star } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
