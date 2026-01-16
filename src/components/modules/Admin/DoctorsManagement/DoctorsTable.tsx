@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
 import DoctorFormDialog from "./DoctorFormDialog";
-import { doctorsColumns } from "./doctorsColumns";
 import DoctorViewDetailDialog from "./DoctorViewDetailDialog";
+import { DoctorsColumns } from "./DoctorsColumns";
 
 interface DoctorsTableProps {
   doctors: IDoctor[];
@@ -62,7 +62,7 @@ const DoctorsTable = ({ doctors, specialities }: DoctorsTableProps) => {
     <>
       <ManagementTable
         data={doctors}
-        columns={doctorsColumns}
+        columns={DoctorsColumns}
         onView={handleView}
         onEdit={handleEdit}
         onDelete={handleDelete}
