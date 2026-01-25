@@ -1,27 +1,26 @@
 import { Star, Quote } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
-import samplePhoto from '../../../assets/images/hero-doctor.jpg';
 
 const testimonials = [
   {
     name: 'Robert Fox',
     role: 'Patient',
-    image: samplePhoto,
+    image: "https://res.cloudinary.com/dh3ej57qw/image/upload/v1763994553/Dr.imrul%20russel.jpg-1763994543848.jpg",
     quote: 'The care and professionalism I received were outstanding. The doctors were knowledgeable and the staff was incredibly supportive throughout my treatment.',
     rating: 5,
   },
   {
     name: 'Jane Cooper',
     role: 'Patient',
-    image: samplePhoto,     
+    image: "https://res.cloudinary.com/dh3ej57qw/image/upload/v1768061571/women-default.jpg-1768061569599.jpg",     
     quote: 'A seamless experience from booking an appointment to the consultation. The use of technology for prescriptions and follow-ups is very convenient.',
     rating: 5,
   },
   {
     name: 'Wade Warren',
     role: 'Patient',
-    image: samplePhoto,     
+    image: "https://res.cloudinary.com/dh3ej57qw/image/upload/v1763803860/fdgsdf.PNG-1763803851861.png",     
     quote: 'I highly recommend their services. The specialists are top-notch, and they truly focus on preventive care which has greatly improved my health.',
     rating: 5,
   },

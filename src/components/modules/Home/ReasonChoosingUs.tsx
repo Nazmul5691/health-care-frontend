@@ -50,7 +50,7 @@ const ReasonChoosingUs = () => {
           <div className="lg:col-span-4 flex justify-center">
             <div className="relative w-full max-w-[350px] aspect-4/5 rounded-[2.5rem] overflow-hidden shadow-2xl">
               <Image 
-                src="/doctor7.jpg" 
+                src="https://res.cloudinary.com/dh3ej57qw/image/upload/v1769356143/doctor6_gwtkkq.jpg" 
                 alt="Doctor Portrait"
                 fill
                 className="object-cover mt-2"

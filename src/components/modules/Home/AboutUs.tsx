@@ -115,7 +115,7 @@ const AboutUs = () => {
                         <div className="flex items-center justify-between border-t pt-8">
                             <div className="flex items-center gap-4">
                                 <div className="relative w-14 h-14 rounded-full overflow-hidden bg-gray-100">
-                                    <Image src="/doctor1.jpg" alt="Founder" fill className="object-cover" />
+                                    <Image src="https://res.cloudinary.com/dh3ej57qw/image/upload/v1768061400/Dr.sajol_ray-removebg-preview.png-1768061397701.png" alt="Founder" fill className="object-cover" />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-[#0F172A]">Dr. Marlie Varga</h4>
