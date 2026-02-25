@@ -14,7 +14,7 @@ const PublicNavbar = async () => {
     { href: "/", label: "Home" },
     { href: "/consultation", label: "Consultation" },
     { href: "/health-plans", label: "Health Plans" },
-    { href: "/doctors", label: "Doctors" },
+    { href: "/our-doctors", label: "Doctors" },
     { href: "/aboutUs", label: "About Us" },
     { href: "/blogs", label: "Blog" },
     { href: "/contact", label: "Contact" },
