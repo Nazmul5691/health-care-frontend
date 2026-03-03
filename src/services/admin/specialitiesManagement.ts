@@ -60,12 +60,36 @@ export async function createSpeciality(_prevState: any, formData: FormData) {
     }
 }
 
-export async function getSpecialities() {
+// export async function getSpecialities() {
+//     try {
+//         const response = await serverFetch.get("/specialties", {
+//             next: {
+//                 tags: ["specialities-list"],
+//                 revalidate: 600 // 10 minutes - specialties rarely change
+//             }
+//         })
+//         const result = await response.json();
+//         return result;
+//     } catch (error: any) {
+//         console.log(error);
+//         return {
+//             success: false,
+//             message: `${process.env.NODE_ENV === 'development' ? error.message : 'Something went wrong'}`
+//         };
+//     }
+// }
+
+
+
+export async function getSpecialities(params?: { page?: number; limit?: number }) {
+    const page = params?.page || 1;
+    const limit = params?.limit || 10;
+    
     try {
-        const response = await serverFetch.get("/specialties", {
+        const response = await serverFetch.get(`/specialties?page=${page}&limit=${limit}`, {
             next: {
                 tags: ["specialities-list"],
-                revalidate: 600 // 10 minutes - specialties rarely change
+                revalidate: 600
             }
         })
         const result = await response.json();
