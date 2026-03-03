@@ -84,7 +84,6 @@ export async function createSpeciality(_prevState: any, formData: FormData) {
 export async function getSpecialities(params?: { page?: number; limit?: number }) {
     const page = params?.page || 1;
     const limit = params?.limit || 10;
-    
     try {
         const response = await serverFetch.get(`/specialties?page=${page}&limit=${limit}`, {
             next: {

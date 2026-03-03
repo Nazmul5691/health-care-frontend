@@ -15,7 +15,8 @@ const AdminDoctorsManagementPage = async ({
 }) => {
   const searchParamsObj = await searchParams;
   const queryString = queryStringFormatter(searchParamsObj); // {searchTerm: "John", speciality: "Cardiology" => "?searchTerm=John&speciality=Cardiology"}
-  const specialitiesResult = await getSpecialities();
+  // const specialitiesResult = await getSpecialities();
+  const specialitiesResult = await getSpecialities({ page: 1, limit: 100 });
   const doctorsResult = await getDoctors(queryString);
   const totalPages = Math.ceil(
     (doctorsResult?.meta?.total || 1) / (doctorsResult?.meta?.limit || 1)
