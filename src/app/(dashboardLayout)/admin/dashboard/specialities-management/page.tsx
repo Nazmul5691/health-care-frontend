@@ -1,6 +1,7 @@
 import SpecialitiesManagementHeader from "@/components/modules/Admin/SpecialitiesManagement/SpecialitiesManagementHeader";
 import SpecialitiesTable from "@/components/modules/Admin/SpecialitiesManagement/SpecialitiesTable";
 import RefreshButton from "@/components/shared/RefreshButton";
+import TablePagination from "@/components/shared/TablePagination";
 import { TableSkeleton } from "@/components/shared/TableSkeleton";
 import { getSpecialities } from "@/services/admin/specialitiesManagement";
 import { Suspense } from "react";
@@ -15,6 +16,10 @@ const AdminSpecialitiesManagementPage = async () => {
       </div>
       <Suspense fallback={<TableSkeleton columns={2} rows={10} />}>
         <SpecialitiesTable specialities={result.data} />
+        <TablePagination
+          currentPage={result?.meta?.page || 1}
+          totalPages={result?.meta?.totalPages || 1}
+        />
       </Suspense>
     </div>
   );
