@@ -137,13 +137,20 @@ const PaymentSuccessContent = () => {
     }, 1000);
 
     // Redirect after countdown with cache refresh
+    // const redirectTimer = setTimeout(() => {
+    //   sessionStorage.removeItem("paymentReturnUrl");
+    //   // Use replace to prevent back button issues
+    //   router.replace(storedUrl);
+    //   // Force a hard refresh to get updated data
+    //   router.refresh();
+    // }, 3000);
     const redirectTimer = setTimeout(() => {
       sessionStorage.removeItem("paymentReturnUrl");
-      // Use replace to prevent back button issues
-      router.replace(storedUrl);
-      // Force a hard refresh to get updated data
-      router.refresh();
-    }, 3000);
+      router.refresh();                        // ✅ আগে refresh
+      setTimeout(() => {
+        router.replace("/dashboard/my-appointments"); // ✅ সঠিক path
+      }, 500);
+    }, 5000); // ✅ 5 সেকেন্ড
 
     return () => {
       clearInterval(timer);
@@ -151,13 +158,21 @@ const PaymentSuccessContent = () => {
     };
   }, [router]);
 
+  // const handleManualRedirect = () => {
+  //   const storedUrl =
+  //     sessionStorage.getItem("paymentReturnUrl") ||
+  //     "/dashboard/my-appointments";
+  //   sessionStorage.removeItem("paymentReturnUrl");
+  //   router.replace(storedUrl);
+  //   router.refresh();
+  // };
+
   const handleManualRedirect = () => {
-    const storedUrl =
-      sessionStorage.getItem("paymentReturnUrl") ||
-      "/dashboard/my-appointments";
     sessionStorage.removeItem("paymentReturnUrl");
-    router.replace(storedUrl);
     router.refresh();
+    setTimeout(() => {
+      router.replace("/dashboard/my-appointments");
+    }, 500);
   };
 
   return (

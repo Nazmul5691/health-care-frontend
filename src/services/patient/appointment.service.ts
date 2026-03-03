@@ -199,7 +199,8 @@ export async function createAppointment(data: IAppointmentFormData) {
             revalidateTag('patient-dashboard-meta', 'default');
             revalidateTag('admin-dashboard-meta', 'default');
             revalidateTag('doctor-dashboard-meta', 'default');
-            revalidatePath('/patient/appointments');
+            // revalidatePath('/patient/appointments');
+            revalidatePath('/dashboard/my-appointments');
         }
 
         return result;
@@ -231,7 +232,8 @@ export async function createAppointmentWithPayLater(data: IAppointmentFormData) 
             revalidateTag('patient-dashboard-meta', 'default');
             revalidateTag('admin-dashboard-meta', 'default');
             revalidateTag('doctor-dashboard-meta', 'default');
-            revalidatePath('/patient/appointments');
+            // revalidatePath('/patient/appointments');
+            revalidatePath('/dashboard/my-appointments');
         }
         return result;
     } catch (error: any) {
@@ -252,7 +254,8 @@ export async function getMyAppointments(queryString?: string) {
             `/appointment/my-appointment${queryString ? `?${queryString}` : "?sortBy=createdAt&sortOrder=desc"}`, {
             next: {
                 tags: ["my-appointments"],
-                revalidate: 120,
+                // revalidate: 120,
+                revalidate: 0,
             },
         }
         );
@@ -343,7 +346,9 @@ export async function changeAppointmentStatus(
             revalidateTag('patient-dashboard-meta', 'default');
             revalidateTag('dashboard-meta', 'default');
             // Revalidate the appointments page path
-            revalidatePath('/patient/appointments');
+            // revalidatePath('/patient/appointments');
+            revalidatePath('/dashboard/my-appointments');
+            revalidatePath(`/dashboard/my-appointments/${appointmentId}`);
         }
         return result;
     } catch (error: any) {
@@ -368,10 +373,13 @@ export async function handlePaymentSuccess(appointmentId: string) {
         revalidateTag('patient-dashboard-meta', 'default');
         revalidateTag('admin-dashboard-meta', 'default');
         revalidateTag('doctor-dashboard-meta', 'default');
-        
+
         // Force revalidate the appointments page
-        revalidatePath('/patient/appointments');
-        
+        // revalidatePath('/patient/appointments');
+        revalidatePath('/dashboard/my-appointments');
+        revalidatePath(`/dashboard/my-appointments/${appointmentId}`);
+        revalidatePath('/dashboard/payment-success');
+
         return { success: true };
     } catch (error: any) {
         console.error("Error handling payment success:", error);
