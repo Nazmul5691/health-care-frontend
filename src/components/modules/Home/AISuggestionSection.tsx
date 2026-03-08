@@ -32,7 +32,7 @@
 //         >
 //           {/* Main Glass Card */}
 //           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 md:p-12 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]">
-            
+
 //             {/* Glossy Overlay Reflection */}
 //             <div className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-linear-to-br from-white/10 via-transparent to-transparent rotate-45 pointer-events-none" />
 
@@ -133,7 +133,7 @@ const AISuggestionSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (symptoms.trim().length >= 5) {
-      setOpenDialog(true) // ✅ dialog খুলুন
+      setOpenDialog(true)
     }
   }
 
@@ -143,15 +143,17 @@ const AISuggestionSection = () => {
       <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px] -z-10" />
 
       {/* ✅ externalOpen এবং onOpenChange props */}
-      <AISearchDialog
-        externalOpen={openDialog}
-        onOpenChange={setOpenDialog}
-        initialSymptoms={symptoms}
-        onSearchComplete={() => {
-          setOpenDialog(false)
-          setSymptoms("") // dialog বন্ধ হলে symptoms clear
-        }}
-      />
+      <div className="hidden">
+        <AISearchDialog
+          externalOpen={openDialog}
+          onOpenChange={setOpenDialog}
+          initialSymptoms={symptoms}
+          onSearchComplete={() => {
+            setOpenDialog(false)
+            setSymptoms("") // dialog বন্ধ হলে symptoms clear
+          }}
+        />
+      </div>
 
       <div className="container mx-auto px-6 flex justify-center">
         <motion.div
