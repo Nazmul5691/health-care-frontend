@@ -97,9 +97,10 @@
 
 
 
-import Image from "next/image"
-import { ArrowRight, BadgeCheck } from "lucide-react"
+// import Image from "next/image"
+// import { ArrowRight, BadgeCheck } from "lucide-react"
 import { getDoctors } from "@/services/admin/doctorManagement"
+import DoctorCard from "../Consultation/DoctorCard"
 
 const MeetDoctors = async () => {
   // Same API, just limit 3
@@ -118,13 +119,13 @@ const MeetDoctors = async () => {
         </div>
 
         {/* Doctors Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {doctors.map((doctor: any) => (
             <div
               key={doctor._id}
               className="group relative bg-[#F8FAFC] rounded-4xl p-6 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-100"
             >
-              {/* Doctor Image */}
+              
               <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-6 bg-gray-200">
                 <Image
                   src={doctor.profilePhoto}
@@ -134,7 +135,6 @@ const MeetDoctors = async () => {
                 />
               </div>
 
-              {/* Doctor Info */}
               <div className="flex justify-between items-end">
                 <div>
                   <h3 className="text-xl font-bold text-[#0F172A] mb-1">
@@ -157,7 +157,6 @@ const MeetDoctors = async () => {
                 <BadgeCheck className="w-6 h-6 text-blue-500 fill-blue-50" />
               </div>
 
-              {/* Appointment Button */}
               <div className="absolute bottom-0 left-0 w-full p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                 <button className="w-full bg-[#0b0ed4] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-200 hover:bg-[#0205a3]">
                   Appointment
@@ -166,7 +165,13 @@ const MeetDoctors = async () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
+
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {doctors.map((doctor:any) => (
+                <DoctorCard key={doctor.id} doctor={doctor} />
+              ))}
+          </div>
 
       </div>
     </section>

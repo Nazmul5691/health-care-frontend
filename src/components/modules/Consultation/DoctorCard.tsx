@@ -38,7 +38,7 @@ export default function DoctorCard({ doctor }: DoctorCard) {
 
             <div className="flex-1 min-w-0">
               <CardTitle className="text-lg line-clamp-1">
-                Dr. {doctor.name}
+                {doctor.name}
               </CardTitle>
               <CardDescription className="line-clamp-1">
                 {doctor.designation}
