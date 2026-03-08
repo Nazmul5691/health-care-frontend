@@ -22,7 +22,7 @@ const ConsultationPage = async ({
   // Fetch doctors and specialties in parallel
   const [doctorsResponse, specialtiesResponse] = await Promise.all([
     getDoctors(queryString),
-    getSpecialities(),
+    getSpecialities({page:1, limit: 100}),
   ]);
 
   const doctors = doctorsResponse?.data || [];
@@ -54,7 +54,7 @@ const ConsultationPage = async ({
         {/* Pagination */}
         <TablePagination
           currentPage={doctorsResponse?.meta?.page || 1}
-          totalPages={doctorsResponse?.meta?.totalPage || 1}
+          totalPages={doctorsResponse?.meta?.totalPages || 1}
         />
       </div>
     </div>
