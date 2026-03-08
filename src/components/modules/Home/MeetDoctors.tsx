@@ -29,7 +29,7 @@
 //   return (
 //     <section className="py-20 bg-gray-200">
 //       <div className="container mx-auto px-6">
-        
+
 //         {/* Section Header */}
 //         <div className="mb-12">
 //           <h2 className="text-4xl md:text-5xl font-bold text-center text-[#0F172A] leading-tight">
@@ -101,10 +101,11 @@
 // import { ArrowRight, BadgeCheck } from "lucide-react"
 import { getDoctors } from "@/services/admin/doctorManagement"
 import DoctorCard from "../Consultation/DoctorCard"
+import Link from "next/link"
 
 const MeetDoctors = async () => {
   // Same API, just limit 3
-  const doctorsResponse = await getDoctors("?limit=3")
+  const doctorsResponse = await getDoctors("limit=3&sortBy=createdAt&sortOrder=asc")
   const doctors = doctorsResponse?.data || []
 
   return (
@@ -167,12 +168,19 @@ const MeetDoctors = async () => {
           ))}
         </div> */}
 
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {doctors.map((doctor:any) => (
-                <DoctorCard key={doctor.id} doctor={doctor} />
-              ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {doctors.map((doctor: any) => (
+            <DoctorCard key={doctor.id} doctor={doctor} />
+          ))}
+        </div>
 
+      </div>
+      <div>
+        <Link href="/consultation" className="flex justify-center">
+          <button className="mt-10 bg-[#0b0ed4] text-white py-3 px-6 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-200 hover:bg-[#0205a3] transition-colors mx-auto">
+            View All Doctors
+          </button>
+        </Link>
       </div>
     </section>
   )
