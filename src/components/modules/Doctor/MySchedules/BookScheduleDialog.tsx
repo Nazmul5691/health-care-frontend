@@ -82,8 +82,7 @@ export default function BookScheduleDialog({
       setIsLoading(true);
       await createDoctorSchedule(selectedSchedules);
       toast.success(
-        `Successfully booked ${selectedSchedules.length} schedule${
-          selectedSchedules.length > 1 ? "s" : ""
+        `Successfully booked ${selectedSchedules.length} schedule${selectedSchedules.length > 1 ? "s" : ""
         }`
       );
       if (onSuccess) {
@@ -144,6 +143,39 @@ export default function BookScheduleDialog({
               </p>
             </div>
           ) : (
+            // <div className="space-y-6">
+            //   {groupedSchedules.map(([date, daySchedules]) => (
+            //     <div key={date}>
+            //       <h3 className="font-medium mb-3">
+            //         {format(new Date(date), "EEEE, MMMM d, yyyy")}
+            //       </h3>
+            //       <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            //         {daySchedules.map((schedule) => (
+            //           <div
+            //             key={schedule.id}
+            //             className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-accent cursor-pointer"
+            //             onClick={() => handleToggleSchedule(schedule.id)}
+            //           >
+            //             <Checkbox
+            //               id={schedule.id}
+            //               checked={selectedSchedules.includes(schedule.id)}
+            //               onCheckedChange={() =>
+            //                 handleToggleSchedule(schedule.id)
+            //               }
+            //             />
+            //             <Label
+            //               htmlFor={schedule.id}
+            //               className="flex-1 cursor-pointer"
+            //             >
+            //               {format(new Date(schedule.startDateTime), "h:mm a")} -{" "}
+            //               {format(new Date(schedule.endDateTime), "h:mm a")}
+            //             </Label>
+            //           </div>
+            //         ))}
+            //       </div>
+            //     </div>
+            //   ))}
+            // </div>
             <div className="space-y-6">
               {groupedSchedules.map(([date, daySchedules]) => (
                 <div key={date}>
@@ -155,18 +187,16 @@ export default function BookScheduleDialog({
                       <div
                         key={schedule.id}
                         className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-accent cursor-pointer"
-                        onClick={() => handleToggleSchedule(schedule.id)}
+                        onClick={() => handleToggleSchedule(schedule.id)} // 
                       >
                         <Checkbox
                           id={schedule.id}
                           checked={selectedSchedules.includes(schedule.id)}
-                          onCheckedChange={() =>
-                            handleToggleSchedule(schedule.id)
-                          }
                         />
                         <Label
                           htmlFor={schedule.id}
                           className="flex-1 cursor-pointer"
+                          onClick={(e) => e.stopPropagation()} 
                         >
                           {format(new Date(schedule.startDateTime), "h:mm a")} -{" "}
                           {format(new Date(schedule.endDateTime), "h:mm a")}
