@@ -117,7 +117,7 @@ export default function DoctorCard({ doctor }: DoctorCard) {
               View Details
             </Button>
           </Link>
-          <Button onClick={() => setShowScheduleModal(true)} className="flex-1">
+          <Button onClick={() => setShowScheduleModal(true)} className="flex-1 hover:bg-blue-700">
             Book Appointment
           </Button>
         </CardFooter>

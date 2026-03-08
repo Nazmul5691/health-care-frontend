@@ -177,7 +177,7 @@ const MeetDoctors = async () => {
       </div>
       <div>
         <Link href="/consultation" className="flex justify-center">
-          <button className="mt-10 bg-[#0b0ed4] text-white py-3 px-6 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-200 hover:bg-[#0205a3] transition-colors mx-auto">
+          <button className="mt-10 bg-[#0b0ed4] cursor-pointer text-white py-3 px-6 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-200 hover:bg-[#0205a3] transition-colors mx-auto">
             View All Doctors
           </button>
         </Link>
