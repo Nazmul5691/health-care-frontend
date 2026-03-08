@@ -142,7 +142,7 @@ const AISuggestionSection = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -z-10" />
       <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px] -z-10" />
 
-      {/* ✅ externalOpen এবং onOpenChange props */}
+      
       <div className="hidden">
         <AISearchDialog
           externalOpen={openDialog}
@@ -150,7 +150,7 @@ const AISuggestionSection = () => {
           initialSymptoms={symptoms}
           onSearchComplete={() => {
             setOpenDialog(false)
-            setSymptoms("") // dialog বন্ধ হলে symptoms clear
+            setSymptoms("") 
           }}
         />
       </div>
@@ -197,7 +197,7 @@ const AISuggestionSection = () => {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button
                   type="submit"
-                  disabled={symptoms.trim().length < 5} // ✅ 5 char এর কম হলে disable
+                  disabled={symptoms.trim().length < 5} // 
                   className="h-14 w-full rounded-2xl bg-[#0b0ed4] text-white font-bold text-lg hover:bg-[#0306ac] shadow-lg shadow-blue-600/30 gap-3 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Search className="size-5" />
