@@ -31,6 +31,7 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
               name="email"
               type="email"
               placeholder="m@example.com"
+              defaultValue={state?.fields?.email ?? ""}
             />
             <InputFieldError field="email" state={state} />
           </Field>
@@ -45,6 +46,7 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 className="pr-10"
+                defaultValue={state?.fields?.password ?? ""} 
               />
               <button
                 type="button"
