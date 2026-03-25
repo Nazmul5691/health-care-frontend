@@ -118,13 +118,15 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
         <FieldGroup className="mt-4">
           <Field>
             {/* Action buttons row */}
-            <div className="flex items-center gap-2">
-              <Button type="submit" disabled={isPending}>
-                {isPending ? "Logging in..." : "Login"}
-              </Button>
+            <div className="flex-col items-center gap-2">
+              <div className="w-full">
+                <Button type="submit" disabled={isPending}>
+                  {isPending ? "Logging in..." : "Login"}
+                </Button>
+              </div>
 
               {/* Demo dropdown */}
-              <div className="relative" ref={dropdownRef}>
+              <div className="relative w-full" ref={dropdownRef}>
                 <Button
                   type="button"
                   variant="outline"
