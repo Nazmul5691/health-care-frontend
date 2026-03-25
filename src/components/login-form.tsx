@@ -118,12 +118,11 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
         <FieldGroup className="mt-4">
           <Field>
             {/* Action buttons row */}
-            <div className="flex-col items-center gap-2">
-              <div className="w-full">
-                <Button type="submit" disabled={isPending}>
-                  {isPending ? "Logging in..." : "Login"}
-                </Button>
-              </div>
+            <div className="flex flex-col gap-2 w-full">
+              {/* Login Button */}
+              <Button type="submit" disabled={isPending} className="w-full">
+                {isPending ? "Logging in..." : "Login"}
+              </Button>
 
               {/* Demo dropdown */}
               <div className="relative w-full" ref={dropdownRef}>
@@ -131,16 +130,16 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
                   type="button"
                   variant="outline"
                   onClick={() => setShowDemo((prev) => !prev)}
-                  className="flex items-center gap-1"
+                  className="w-full flex items-center justify-center gap-2"
                 >
-                  Demo
+                  <span>Demo Account</span>
                   <ChevronDown
                     className={`h-4 w-4 transition-transform duration-200 ${showDemo ? "rotate-180" : ""}`}
                   />
                 </Button>
 
                 {showDemo && (
-                  <div className="absolute left-0 top-full mt-1 z-50 w-52 rounded-lg border bg-white shadow-lg py-1 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="absolute left-0 top-full mt-1 z-50 w-full rounded-lg border bg-white shadow-lg py-1 animate-in fade-in slide-in-from-top-1 duration-150">
                     {DEMO_ACCOUNTS.map((account) => {
                       const Icon = account.icon;
                       return (
@@ -151,9 +150,12 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
                           className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${account.bg}`}
                         >
                           <Icon className={`h-4 w-4 ${account.color}`} />
-                          <span className="font-medium text-gray-700">
-                            Login as {account.role}
-                          </span>
+                          <div className="flex flex-col items-start">
+                            <span className={`font-semibold text-xs ${account.color}`}>
+                              {account.role}
+                            </span>
+                            <span className="text-gray-500 text-xs">{account.email}</span>
+                          </div>
                         </button>
                       );
                     })}
@@ -175,6 +177,7 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
             </FieldDescription>
           </Field>
         </FieldGroup>
+
       </FieldGroup>
     </form>
   );
