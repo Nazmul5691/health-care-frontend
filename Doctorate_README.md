@@ -1,6 +1,9 @@
 # 🩺 Doctorate — Online Healthcare Consultation Platform
 
-A modern, scalable, and role-based doctor consultation web application built with Next.js App Router.
+A modern, scalable, and role-based doctor consultation web application built with Next.js App Router, designed to provide seamless digital healthcare services anytime, anywhere.
+
+Doctorate enables patients to connect with verified doctors, book consultations, receive e-prescriptions, and manage their health — all from a single platform.
+
 
 🔗 Live Demo: https://health-care-frontend-tshw.vercel.app/
 
@@ -19,35 +22,61 @@ Doctorate allows users to:
 
 ## 🧱 Tech Stack
 
-- Next.js 16 (App Router)
-- React 19
-- TypeScript
-- Tailwind CSS v4
-- Radix UI
-- Framer Motion
-- Zod
-- JWT Authentication
+### ⚛️ Frontend Core
+Next.js 16 (App Router)
+React 19
+TypeScript
+
+###  🎨 UI & Styling
+Tailwind CSS v4
+Radix UI
+Lucide Icons
+Framer Motion
+Sonner (Toast Notifications)
+
+###  📋 Forms & Validation
+Zod
+
+### 🔐 Authentication & Utilities
+JWT (jsonwebtoken)
+Cookie-based authentication
+Custom Middleware (proxy.ts)
+Date-fns
+
 
 ---
 
-## 🔐 Authentication & Security
 
-- JWT-based authentication
-- Access & refresh tokens
-- Cookie-based auth
-- Auto token refresh
-- Role-based route protection
+## 🔑 Features
+JWT-based authentication
+Access & refresh token system
+Secure cookie handling
+Auto token refresh
+Password reset with token verification
+Role-based route protection
 
-Core file:
+
+
+## Core file:
 src/proxy.ts
+
+### Handles:
+- Token refresh flow
+- Route protection
+- Role validation
+- Redirect logic
+- Reset password validation
 
 ---
 
 ## 👥 User Roles
 
-- PATIENT
-- DOCTOR
-- ADMIN
+| Role    | Description                                      |
+| ------- | ------------------------------------------------ |
+| PATIENT | Book consultations, view doctors, manage records |
+| DOCTOR  | Manage appointments, consult patients            |
+| ADMIN   | Manage users, doctors, specialities, system      |
+
 
 ---
 
@@ -120,24 +149,28 @@ src/
 
 ## 📦 Features
 
-### Public
-- Homepage
-- Doctor listing
-- About & Contact pages
+### 🌍 Public Features
+Homepage with healthcare overview
+Doctor listings & profiles
+About & contact pages
+Blog section
 
-### Patient Dashboard
-- Book appointments
-- View prescriptions
-- Manage profile
+### 👤 Patient Dashboard
+- Book doctor consultations
+- View appointment history
+- Manage profile & password
+- Access prescriptions
 
-### Doctor Dashboard
+### 👨‍⚕️ Doctor Dashboard
 - Manage appointments
-- Patient consultations
+- View patient information
+- Provide consultations
 
-### Admin Dashboard
-- Manage users
-- Manage doctors
-- Manage specialities
+### 🛠 Admin Dashboard
+- User management
+- Doctor management
+- Specialities management
+- System control
 
 ---
 
