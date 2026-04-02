@@ -1,36 +1,198 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🩺 Doctorate — Online Healthcare Consultation Platform
 
-## Getting Started
+A modern, scalable, and role-based doctor consultation web application built with Next.js App Router, designed to provide seamless digital healthcare services anytime, anywhere.
 
-First, run the development server:
+Doctorate enables patients to connect with verified doctors, book consultations, receive e-prescriptions, and manage their health — all from a single platform.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+🔗 Live Demo: https://health-care-frontend-tshw.vercel.app/
+
+---
+
+## 🚀 Project Overview
+
+Doctorate allows users to:
+- Browse doctors by speciality
+- Book consultations
+- Receive e-prescriptions
+- Manage appointments & health data
+- Access role-based dashboards
+
+---
+
+## 🧱 Tech Stack
+
+### ⚛️ Frontend Core
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+
+###  🎨 UI & Styling
+- Tailwind CSS v4
+- Radix UI
+- Lucide Icons
+- Framer Motion
+- Sonner (Toast Notifications)
+
+###  📋 Forms & Validation
+- Zod
+
+### 🔐 Authentication & Utilities
+- JWT (jsonwebtoken)
+- Cookie-based authentication
+- Custom Middleware (proxy.ts)
+- Date-fns
+
+
+---
+
+
+## 🔑 Features
+- JWT-based authentication
+- Access & refresh token system
+- Secure cookie handling
+- Auto token refresh
+- Password reset with token verification
+- Role-based route protection
+
+
+
+## Core file:
+```ts
+src/proxy.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Handles:
+- Token refresh flow
+- Route protection
+- Role validation
+- Redirect logic
+- Reset password validation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👥 User Roles
 
-## Learn More
+| Role    | Description                                      |
+| ------- | ------------------------------------------------ |
+| PATIENT | Book consultations, view doctors, manage records |
+| DOCTOR  | Manage appointments, consult patients            |
+| ADMIN   | Manage users, doctors, specialities, system      |
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🗂 Folder Structure
 
-## Deploy on Vercel
+```txt
+src/
+├── app/
+│   ├── (commonLayout)
+│   │   ├── login/
+│   │   ├── register/
+│   │   ├── forgot-password/
+│   │   ├── reset-password/
+│   │
+│   ├── (dashboardLayout)
+│   │   ├── (commonProtectedLayout)
+│   │   │   ├── my-profile/
+│   │   │   ├── settings/
+│   │   │   ├── change-password/
+│   │   │
+│   │   ├── admin/
+│   │   │   └── dashboard/
+│   │   │        ├── specialities-management/
+│   │   │        ├── users-management/
+│   │   │        ├── doctors-management/
+│   │   │        ├── layout.tsx
+│   │   │        ├── loading.tsx
+│   │   │        └── page.tsx
+│   │   │
+│   │   ├── doctor/
+│   │   │   ├── dashboard/
+│   │   │   ├── appointments/
+│   │   │
+│   │   ├── dashboard/ (patient)
+│   │       ├── appointments/
+│   │       ├── prescriptions/
+│   │       ├── payments/
+│   │
+│   ├── about/
+│   ├── doctors/
+│   ├── consultation/
+│   ├── blog/
+│   ├── contact/
+│   ├── layout.tsx
+│   ├── error.tsx
+│   ├── not-found.tsx
+│
+├── components/
+│   ├── modules/
+│   ├── shared/
+│   └── ui/
+│
+├── hooks/
+├── lib/
+│   ├── auth-utils.ts
+│   ├── jwtHandlers.ts
+│   ├── serverFetch.ts
+│   ├── navItems.config.ts
+│
+├── services/
+│   ├── auth/
+│   ├── doctor/
+│   ├── patient/
+│   ├── admin/
+│
+├── zod/
+├── types/
+└── proxy.ts
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📦 Features
+
+### 🌍 Public Features
+Homepage with healthcare overview
+Doctor listings & profiles
+About & contact pages
+Blog section
+
+### 👤 Patient Dashboard
+- Book doctor consultations
+- View appointment history
+- Manage profile & password
+- Access prescriptions
+
+### 👨‍⚕️ Doctor Dashboard
+- Manage appointments
+- View patient information
+- Provide consultations
+
+### 🛠 Admin Dashboard
+- User management
+- Doctor management
+- Specialities management
+- System control
+
+---
+
+## ⚙️ Scripts
+
+- npm run dev
+- npm run build
+- npm run start
+- npm run lint
+
+---
+
+## 👨‍💻 Author
+
+Md. Nazmul Islam
+
+---
+
+## 📝 License
+
+MIT License
