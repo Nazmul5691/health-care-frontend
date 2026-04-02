@@ -23,42 +23,44 @@ Doctorate allows users to:
 ## 🧱 Tech Stack
 
 ### ⚛️ Frontend Core
-Next.js 16 (App Router)
-React 19
-TypeScript
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
 
 ###  🎨 UI & Styling
-Tailwind CSS v4
-Radix UI
-Lucide Icons
-Framer Motion
-Sonner (Toast Notifications)
+- Tailwind CSS v4
+- Radix UI
+- Lucide Icons
+- Framer Motion
+- Sonner (Toast Notifications)
 
 ###  📋 Forms & Validation
-Zod
+- Zod
 
 ### 🔐 Authentication & Utilities
-JWT (jsonwebtoken)
-Cookie-based authentication
-Custom Middleware (proxy.ts)
-Date-fns
+- JWT (jsonwebtoken)
+- Cookie-based authentication
+- Custom Middleware (proxy.ts)
+- Date-fns
 
 
 ---
 
 
 ## 🔑 Features
-JWT-based authentication
-Access & refresh token system
-Secure cookie handling
-Auto token refresh
-Password reset with token verification
-Role-based route protection
+- JWT-based authentication
+- Access & refresh token system
+- Secure cookie handling
+- Auto token refresh
+- Password reset with token verification
+- Role-based route protection
 
 
 
 ## Core file:
+```ts
 src/proxy.ts
+```
 
 ### Handles:
 - Token refresh flow
@@ -82,6 +84,7 @@ src/proxy.ts
 
 ## 🗂 Folder Structure
 
+```txt
 src/
 ├── app/
 │   ├── (commonLayout)
@@ -144,6 +147,7 @@ src/
 ├── zod/
 ├── types/
 └── proxy.ts
+```
 
 ---
 
@@ -176,10 +180,10 @@ Blog section
 
 ## ⚙️ Scripts
 
-npm run dev
-npm run build
-npm run start
-npm run lint
+- npm run dev
+- npm run build
+- npm run start
+- npm run lint
 
 ---
 
