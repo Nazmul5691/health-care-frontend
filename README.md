@@ -17,6 +17,7 @@ Doctorate allows users to:
 - Receive e-prescriptions
 - Manage appointments & health data
 - Access role-based dashboards
+- 🤖 AI-powered doctor search based on symptoms
 
 ---
 
@@ -54,8 +55,28 @@ Doctorate allows users to:
 - Auto token refresh
 - Password reset with token verification
 - Role-based route protection
+- 🤖 AI Doctor Search (Symptom-based search system)
 
 
+## 🤖 AI Doctor Search
+
+Doctorate includes an AI-powered doctor search system that helps users find the right specialist based on symptoms.
+
+### 🔍 How it works:
+- User enters symptoms (e.g., chest pain, headache, fever)
+- System analyzes the input
+- Suggests relevant doctor specialities
+- Displays matching doctors instantly
+
+### 💡 Example:
+- Input: Chest pain → Suggests Cardiologist
+- Input: Headache → Suggests Neurologist
+
+### 🎯 Benefits:
+- Faster doctor discovery
+- No need to manually select speciality
+- Beginner-friendly for patients
+- Improves user experience significantly
 
 ## Core file:
 ```ts
@@ -154,10 +175,11 @@ src/
 ## 📦 Features
 
 ### 🌍 Public Features
-Homepage with healthcare overview
-Doctor listings & profiles
-About & contact pages
-Blog section
+- Homepage with healthcare overview
+- Doctor listings & profiles
+- AI-based doctor search
+- About & contact pages
+- Blog section
 
 ### 👤 Patient Dashboard
 - Book doctor consultations
